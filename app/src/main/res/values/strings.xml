@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Current Location Data</string>
+    <string name="address">Address</string>
+    <string name="latitude">Latitude:</string>
+    <string name="longitude">Longitude:</string>
+    <string name="city">City</string>
+    <string name="time">Time</string>
+    <string name="photo_credit">Photo by Reid Zura on Unsplash</string>
+    <string name="accuracy">Accuracy</string>
+    <string name="altitude">Altitude</string>
+
+</resources>
