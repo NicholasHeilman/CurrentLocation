@@ -73,7 +73,8 @@
             android:paddingBottom="10dp"
             android:textColor="#ffffff"
             android:textSize="20sp"
-            android:text="@string/address"/>
+            android:text="@string/address"
+            android:onClick="openMaps"/>
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 

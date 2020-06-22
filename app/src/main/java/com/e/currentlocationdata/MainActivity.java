@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -32,17 +33,17 @@ public class MainActivity extends AppCompatActivity {
     LocationManager locationManager;
     LocationListener locationListener;
     private ProgressBar indeterminateBar;
+    private double latitude, longitude;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         indeterminateBar = findViewById(R.id.indeterminateBar);
 
-        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-
+        // get location
         locationListener = new LocationListener() {
-
             @Override
             public void onLocationChanged(Location location) {
                 updateLocationInfo(location);
@@ -68,6 +69,9 @@ public class MainActivity extends AppCompatActivity {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                latitude = location.getLatitude();
+                longitude = location.getLongitude();
+
                 latTextView.setText(format("Latitude: %s", df.format(location.getLatitude())));
                 lonTextView.setText(format("Longitude: %s", df.format(location.getLongitude())));
                 tvAccuracy.setText(format("Accuracy: %s", df.format(location.getAccuracy())));
@@ -115,6 +119,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void updateLocationInfo(Location location){
+    // takes in location
+    }
 
+    public void openMaps(View view) {
+        Intent mapIntent = new Intent(getApplicationContext(), MapsActivity.class);
+        mapIntent.putExtra("latitude", latitude );
+        mapIntent.putExtra("longitude", longitude);
+        startActivity(mapIntent);
     }
 }
