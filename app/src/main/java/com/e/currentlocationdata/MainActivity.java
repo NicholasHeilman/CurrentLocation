@@ -29,6 +29,7 @@ import static java.lang.String.format;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "MAINACTIVITY";
     private TextView latTextView, lonTextView, tvAddress, tvAccuracy, tvAltitude;
     LocationManager locationManager;
     LocationListener locationListener;
@@ -41,7 +42,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         indeterminateBar = findViewById(R.id.indeterminateBar);
-
+        indeterminateBar.setVisibility(View.VISIBLE);
+        
         // get location
         locationListener = new LocationListener() {
             @Override
@@ -102,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        indeterminateBar.setVisibility(View.VISIBLE);
     }
 
     @Override

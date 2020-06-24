@@ -25,16 +25,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
         Intent mIntent = getIntent();
         latitude = mIntent.getDoubleExtra("latitude", -34);
         longitude = mIntent.getDoubleExtra("longitude", 151);
+
     }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         LatLng userLocation = new LatLng(latitude,longitude);
-        mMap.addMarker(new MarkerOptions().position(userLocation).title("Marker in Sydney"));
+        mMap.addMarker(new MarkerOptions().position(userLocation));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(userLocation));
         mMap.moveCamera(CameraUpdateFactory.zoomTo(15));
     }
